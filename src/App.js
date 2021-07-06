@@ -9,7 +9,8 @@ import { useDataLayerValue } from "./DataLayer";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token }, dispatch] = useDataLayerValue();
+  const [{ user, token, currently_playing_track, playlists }, dispatch] =
+    useDataLayerValue();
 
   useEffect(() => {
     const hash = getTokenFromUrl();
@@ -34,15 +35,29 @@ function App() {
           playlists: playlist,
         });
       });
+
+      spotify.getPlaylist("37i9dQZEVXcPZkYctmQFDi").then((response) => {
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: response,
+        });
+      });
+
+      spotify.getMyCurrentPlayingTrack().then((response) => {
+        dispatch({
+          type: "SET_CURRENT_TRACK",
+          current_track: response,
+        });
+      });
     }
   }, []);
+
+  console.log(currently_playing_track);
+  console.log(playlists);
 
   return (
     <div className="app">
       {token ? <Player spotify={spotify} /> : <Login />}
-
-      {/* Spotify Logo */}
-      {/* Login Button */}
     </div>
   );
 }

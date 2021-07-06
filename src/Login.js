@@ -10,7 +10,7 @@ function Login() {
         alt=""
       />
       <a href={loginUrl} className="login-button">
-        LOGIN
+        Login with Spotify
       </a>
     </div>
   );

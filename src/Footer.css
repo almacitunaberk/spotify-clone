@@ -1,7 +1,7 @@
 .footer {
   position: fixed;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 96%;
   bottom: 0;
   height: 64px;

@@ -6,7 +6,7 @@
 }
 
 .login > img {
-  width: 100%;
+  width: 30%;
 }
 
 .login > a {
@@ -16,4 +16,5 @@
   font-weight: 800;
   color: white;
   text-decoration: none;
+  text-transform: uppercase;
 }
